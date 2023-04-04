@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.stonecap.wardrobe.network"
+    namespace = "com.stonecap.wardrobe.core.network"
     compileSdk = 33
 
     defaultConfig {
@@ -38,5 +38,6 @@ android {
 
 dependencies {
     implementation(libs.androidx.core.ktx)
+    testImplementation(libs.junit4)
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }

@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.stonecap.wardrobe.feature.closet"
+    namespace = "com.stonecap.wardrobe.core.ui"
     compileSdk = 33
 
     defaultConfig {
@@ -28,7 +28,6 @@ android {
             languageVersion.set(JavaLanguageVersion.of(17))
         }
     }
-
     compileOptions {
         // Remove after AGP 8.1.0 is stable
         // https://kotlinlang.org/docs/gradle-configure-project.html#gradle-java-toolchains-support
@@ -38,10 +37,6 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.core.ktx)
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.8.0")
-    testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }

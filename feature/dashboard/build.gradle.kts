@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.stonecap.wardrobe.dashboard"
+    namespace = "com.stonecap.wardrobe.feature.dashboard"
     compileSdk = 33
 
     defaultConfig {

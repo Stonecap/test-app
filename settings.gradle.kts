@@ -18,5 +18,7 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 rootProject.name = "Wardrobe"
 include(":app")
 include(":core:network")
+include(":core:ui")
 include(":feature:dashboard")
 include(":feature:closet")
+include(":feature:itemdetails")
