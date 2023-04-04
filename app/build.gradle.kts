@@ -36,6 +36,14 @@ android {
             languageVersion.set(JavaLanguageVersion.of(17))
         }
     }
+    
+    compileOptions {
+        // Remove after AGP 8.1.0 is stable
+        // https://kotlinlang.org/docs/gradle-configure-project.html#gradle-java-toolchains-support
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
     buildFeatures {
         compose = true
     }
