@@ -62,6 +62,10 @@ android {
 }
 
 dependencies {
+    implementation(projects.feature.itemdetails)
+
+    implementation(projects.core.ui)
+
     val composeBom = platform(libs.androidx.compose.bom)
     implementation(composeBom)
     androidTestImplementation(composeBom)
@@ -75,9 +79,10 @@ dependencies {
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.coil.kt)
     implementation(libs.coil.kt.compose)
-    implementation(libs.androidx.navigation.compose)
 
     implementation(libs.androidx.compose.ui.tooling.preview)
     debugImplementation(libs.androidx.compose.ui.tooling)
