@@ -6,7 +6,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 
 @Composable
-fun WNavHost(
+fun WardrobeNavHost(
     navController: NavHostController,
     modifier: Modifier,
     startDestination: String,
