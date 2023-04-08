@@ -27,6 +27,16 @@
             </intent-filter>
         </activity>
 
+        <provider
+            android:name=".ComposeFileProvider"
+            android:authorities="com.stonecap.wardrobe.fileprovider"
+            android:grantUriPermissions="true"
+            android:exported="false">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
+
         <!-- Disable Firebase analytics by default. This setting is overwritten for the `prod`
         flavor -->
         <meta-data

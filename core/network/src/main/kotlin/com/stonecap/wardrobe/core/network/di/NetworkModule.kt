@@ -50,7 +50,7 @@ object NetworkModule {
 //        }
         // Assume most content images are versioned urls
         // but some problematic images are fetching each time
-        .respectCacheHeaders(false)
+//        .respectCacheHeaders(false)
         .apply {
             if (BuildConfig.DEBUG) {
                 logger(DebugLogger())
