@@ -47,8 +47,16 @@ dependencies {
     kapt(libs.hilt.compiler)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.hilt.navigation.compose)
+
     implementation(libs.coil.kt)
     implementation(libs.coil.kt.compose)
     implementation(libs.okhttp.logging)
+
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.okhttp)
+    implementation(libs.ktor.client.resources)
+    implementation(libs.ktor.client.contentNegotiation)
+    implementation(libs.ktor.serialization.json)
     testImplementation(libs.junit4)
 }

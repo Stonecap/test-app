@@ -9,7 +9,13 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import okhttp3.Call
+import io.ktor.client.HttpClient
+import io.ktor.client.engine.okhttp.OkHttp
+import io.ktor.client.plugins.DefaultRequest
+import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.client.plugins.defaultRequest
+import io.ktor.client.plugins.resources.Resources
+import io.ktor.serialization.kotlinx.json.json
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import javax.inject.Singleton
@@ -17,10 +23,9 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-
     @Provides
     @Singleton
-    fun okHttpCallFactory(): Call.Factory = OkHttpClient.Builder()
+    fun okHttpClientInstance() = OkHttpClient.Builder()
         .addInterceptor(
             HttpLoggingInterceptor()
                 .apply {
@@ -30,6 +35,23 @@ object NetworkModule {
                 },
         )
         .build()
+
+    @Provides
+    @Singleton
+    fun provideHttpClient(okHttpClient: OkHttpClient) = HttpClient(OkHttp) {
+        install(Resources)
+        install(ContentNegotiation) {
+            json()
+        }
+        defaultRequest {
+            host ="0.0.0.0"
+        }
+        engine {
+            preconfigured = okHttpClient
+        }
+
+    }
+
 
     /**
      * Since we're displaying SVGs in the app, Coil needs an ImageLoader which supports this
@@ -41,10 +63,10 @@ object NetworkModule {
     @Provides
     @Singleton
     fun imageLoader(
-        okHttpCallFactory: Call.Factory,
+        okHttpClient: OkHttpClient,
         @ApplicationContext application: Context,
     ): ImageLoader = ImageLoader.Builder(application)
-        .callFactory(okHttpCallFactory)
+        .okHttpClient(okHttpClient)
 //        .components {
 //            add(SvgDecoder.Factory())
 //        }
