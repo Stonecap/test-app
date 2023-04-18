@@ -56,6 +56,8 @@ android {
         resources {
             excludes.add("/META-INF/{AL2.0,LGPL2.1}")
             excludes.add("DebugProbesKt.bin")
+            // remove after https://github.com/Kotlin/kotlinx.coroutines/issues/3668 is resolved
+            excludes.add("META-INF/versions/9/previous-compilation-data.bin")
         }
     }
     namespace = "com.stonecap.wardrobe"
@@ -73,6 +75,7 @@ dependencies {
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtimeCompose)
+    implementation(libs.androidx.lifecycle.viewModelCompose)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.ui)
@@ -84,6 +87,7 @@ dependencies {
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.coil.kt)
     implementation(libs.coil.kt.compose)
+    implementation(libs.kotlinx.coroutines.android)
 
     implementation(libs.androidx.compose.ui.tooling.preview)
     debugImplementation(libs.androidx.compose.ui.tooling)

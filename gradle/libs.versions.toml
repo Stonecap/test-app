@@ -1,10 +1,10 @@
 [versions]
 androidxComposeBom = "2023.04.00"
-androidxComposeCompiler = "1.4.4"
+androidxComposeCompiler = "1.4.5"
 firebaseBom = "31.2.3"
-kotlin = "1.8.10"
-ksp = "1.8.10-1.0.9"
-androidGradlePlugin = "8.0.0-rc01"
+kotlin = "1.8.20"
+ksp = "1.8.20-1.0.9"
+androidGradlePlugin = "8.0.0"
 
 androidDesugarJdkLibs = "2.0.1"
 googleServicesPlugin = "4.3.15"
