@@ -13,6 +13,5 @@ fun NavController.navigateToItemDetails(navOptions: NavOptions? = null) {
 
 fun NavGraphBuilder.itemDetailsScreen() {
     composable(route = navRouteItemDetails) {
-
     }
 }

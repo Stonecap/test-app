@@ -4,6 +4,7 @@ import android.content.Context
 import coil.ImageLoader
 import coil.util.DebugLogger
 import com.stonecap.wardrobe.core.network.BuildConfig
+import com.stonecap.wardrobe.core.network.RembgNetworkApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -11,10 +12,10 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.okhttp.OkHttp
-import io.ktor.client.plugins.DefaultRequest
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.defaultRequest
 import io.ktor.client.plugins.resources.Resources
+import io.ktor.http.URLProtocol
 import io.ktor.serialization.kotlinx.json.json
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -38,20 +39,24 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideHttpClient(okHttpClient: OkHttpClient) = HttpClient(OkHttp) {
+    fun provideRembgHttpClient(okHttpClient: OkHttpClient) = HttpClient(OkHttp) {
         install(Resources)
         install(ContentNegotiation) {
             json()
         }
         defaultRequest {
-            host ="0.0.0.0"
+            host = "0.0.0.0"
+            port = 5000
+            url { protocol = URLProtocol.HTTP }
         }
         engine {
             preconfigured = okHttpClient
         }
-
     }
 
+    @Provides
+    @Singleton
+    fun provideRembgService(client: HttpClient) = RembgNetworkApi(client = client)
 
     /**
      * Since we're displaying SVGs in the app, Coil needs an ImageLoader which supports this
