@@ -1,9 +1,11 @@
 plugins {
-    kotlin("kapt")
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.hilt)
     alias(libs.plugins.kotlin.serialization)
+    // KAPT must go last to avoid build warnings.
+    // See: https://stackoverflow.com/questions/70550883/warning-the-following-options-were-not-recognized-by-any-processor-dagger-f
+    kotlin("kapt")
 }
 
 android {
@@ -44,6 +46,7 @@ android {
 
 dependencies {
     implementation(libs.androidx.core.ktx)
+
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
     implementation(libs.androidx.navigation.compose)

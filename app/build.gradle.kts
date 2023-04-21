@@ -1,8 +1,8 @@
 plugins {
-    kotlin("kapt")
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.hilt)
+    kotlin("kapt")
 }
 
 android {
@@ -56,14 +56,13 @@ android {
         resources {
             excludes.add("/META-INF/{AL2.0,LGPL2.1}")
             excludes.add("DebugProbesKt.bin")
-            // remove after https://github.com/Kotlin/kotlinx.coroutines/issues/3668 is resolved
-            excludes.add("META-INF/versions/9/previous-compilation-data.bin")
         }
     }
     namespace = "com.stonecap.wardrobe"
 }
 
 dependencies {
+    implementation(projects.feature.dashboard)
     implementation(projects.feature.itemdetails)
 
     implementation(projects.core.network)
