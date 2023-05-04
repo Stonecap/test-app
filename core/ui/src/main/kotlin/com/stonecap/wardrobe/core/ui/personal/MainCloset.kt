@@ -1,4 +1,4 @@
-package com.stonecap.wardrobe.core.ui
+package com.stonecap.wardrobe.core.ui.personal
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
