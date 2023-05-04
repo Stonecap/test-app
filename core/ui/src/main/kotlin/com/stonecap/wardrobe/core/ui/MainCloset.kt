@@ -2,6 +2,7 @@ package com.stonecap.wardrobe.core.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import com.example.myapplication.ui.theme.totalbgcolor
 import kotlinx.coroutines.Dispatchers
 import kotlin.random.Random
 
@@ -29,7 +30,6 @@ class MainCloset : ComponentActivity() {
 }
 @Composable
 private fun ItemView(itemData: ItemData){
-
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -50,7 +50,7 @@ data class ItemData(
 fun TopAppBarCompose(
 ){
     val context = LocalContext.current
-    SmallTopAppBar(
+    TopAppBar(
         modifier = Modifier,
         title = {},
         navigationIcon = {
@@ -66,10 +66,7 @@ fun TopAppBarCompose(
                 Icon(Icons.Default.Add, contentDescription = "Search")
             }
         },
-
-        colors = TopAppBarDefaults.smallTopAppBarColors(
-            containerColor = totalbgcolor
-        )
+        backgroundColor = totalbgcolor
     )
 }
 //
@@ -80,7 +77,17 @@ private fun ContentView(list:List<ItemData>){
         modifier = Modifier
             .fillMaxSize(),
         containerColor = pointcolor2,
-        topBar = { TopAppBarCompose()}){
+        topBar = { TopAppBarCompose()},
+        floatingActionButton = {
+            LargeFloatingActionButton(
+                onClick = {},
+                containerColor = maincolor,
+                contentColor = Color.White,
+                shape = CircleShape
+            ) {
+                Icon(Icons.Default.Check, "Check")
+            }
+        }){
         LazyVerticalStaggeredGrid(
             state = rememberLazyStaggeredGridState(),
             columns = StaggeredGridCells.Fixed(2),
