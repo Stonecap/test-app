@@ -17,9 +17,11 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 rootProject.name = "Wardrobe"
 include(":app")
+include(":core:data")
+include(":core:model")
 include(":core:network")
 include(":core:ui")
+include(":core:firestore")
 include(":feature:dashboard")
 include(":feature:closet")
 include(":feature:itemdetails")
-include(":core:data")
