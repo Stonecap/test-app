@@ -65,6 +65,7 @@ dependencies {
     implementation(projects.feature.dashboard)
     implementation(projects.feature.itemdetails)
 
+    implementation(projects.core.data)
     implementation(projects.core.network)
     implementation(projects.core.ui)
 

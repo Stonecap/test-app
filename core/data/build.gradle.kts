@@ -52,6 +52,8 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.hilt.navigation.compose)
 
+    implementation(libs.kotlinx.coroutines.android)
+
     implementation(libs.coil.kt)
     implementation(libs.coil.kt.compose)
     implementation(libs.okhttp.logging)
