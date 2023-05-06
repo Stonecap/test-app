@@ -28,6 +28,9 @@ android {
             )
         }
     }
+    hilt {
+        enableAggregatingTask = true
+    }
     java {
         toolchain {
             languageVersion.set(JavaLanguageVersion.of(17))
