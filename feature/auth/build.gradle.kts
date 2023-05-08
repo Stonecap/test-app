@@ -37,13 +37,16 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.core.ktx)
 
     val firebaseBom = platform(libs.firebase.bom)
     implementation(firebaseBom)
     androidTestImplementation(firebaseBom)
-
-    implementation(libs.kotlinx.coroutines.android)
     implementation(libs.firebase.auth)
+
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.coroutines.playServices)
 
     testImplementation(libs.junit4)
     androidTestImplementation(libs.androidx.test.ext)

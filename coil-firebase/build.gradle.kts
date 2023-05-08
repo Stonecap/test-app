@@ -19,7 +19,7 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
@@ -37,13 +37,17 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.core.ktx)
+
     val firebaseBom = platform(libs.firebase.bom)
     implementation(firebaseBom)
 
-    implementation(libs.firebase.firestore)
+    implementation(libs.firebase.storage)
 
+    implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.coroutines.playServices)
 
-    implementation(libs.coil.kt)
-    implementation(libs.coil.kt.compose)
+    api(libs.coil.kt)
+    api(libs.coil.kt.compose)
 }

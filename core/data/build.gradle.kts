@@ -45,6 +45,8 @@ android {
 }
 
 dependencies {
+    implementation(projects.core.model)
+   
     implementation(libs.androidx.core.ktx)
 
     implementation(libs.hilt.android)
@@ -52,6 +54,7 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.hilt.navigation.compose)
 
+    implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
 
     implementation(libs.coil.kt)
@@ -59,6 +62,7 @@ dependencies {
     implementation(libs.okhttp.logging)
 
     implementation(libs.kotlinx.serialization.json)
+    implementation(libs.kotlinx.datetime)
     implementation(libs.ktor.client.core)
     implementation(libs.ktor.client.okhttp)
     implementation(libs.ktor.client.resources)

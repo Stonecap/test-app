@@ -27,10 +27,14 @@ android {
             isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
             signingConfig = signingConfigs.getByName("debug")
         }
+    }
+
+    hilt {
+        enableAggregatingTask = true
     }
 
     java {
@@ -38,7 +42,7 @@ android {
             languageVersion.set(JavaLanguageVersion.of(17))
         }
     }
-    
+
     compileOptions {
         // Remove after AGP 8.1.0 is stable
         // https://kotlinlang.org/docs/gradle-configure-project.html#gradle-java-toolchains-support
@@ -65,6 +69,7 @@ dependencies {
     implementation(projects.feature.dashboard)
     implementation(projects.feature.itemdetails)
 
+    implementation(projects.core.model)
     implementation(projects.core.data)
     implementation(projects.core.network)
     implementation(projects.core.ui)
@@ -74,6 +79,7 @@ dependencies {
     androidTestImplementation(composeBom)
 
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.core.splashscreen)
     implementation(libs.androidx.lifecycle.runtimeCompose)
     implementation(libs.androidx.lifecycle.viewModelCompose)
     implementation(libs.androidx.activity.compose)
@@ -87,6 +93,7 @@ dependencies {
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.coil.kt)
     implementation(libs.coil.kt.compose)
+    implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
 
     implementation(libs.androidx.compose.ui.tooling.preview)
