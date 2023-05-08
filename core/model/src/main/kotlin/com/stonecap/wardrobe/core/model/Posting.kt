@@ -4,7 +4,9 @@ import kotlinx.datetime.Instant
 
 data class Posting<out T>(
     val id: String,
+    val authorId: String,
     val timeCreated: Instant,
-    val tags: Set<Attribute>,
+    val likes: UInt,
+    val hashTags: Set<HashTag>,
     val content: T,
 )
