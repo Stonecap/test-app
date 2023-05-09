@@ -2,7 +2,11 @@ package com.stonecap.wardrobe.core.network.di
 
 import android.content.Context
 import coil.ImageLoader
+import coil.decode.SvgDecoder
+import coil.disk.DiskCache
 import coil.util.DebugLogger
+import com.stonecap.coil_firebase.FirebaseStorageFetcher
+import com.stonecap.coil_firebase.StorageReferenceKeyer
 import com.stonecap.wardrobe.core.network.BuildConfig
 import com.stonecap.wardrobe.core.network.RembgNetworkApi
 import dagger.Module
@@ -72,12 +76,17 @@ object NetworkModule {
         @ApplicationContext application: Context,
     ): ImageLoader = ImageLoader.Builder(application)
         .okHttpClient(okHttpClient)
-//        .components {
-//            add(SvgDecoder.Factory())
-//        }
-        // Assume most content images are versioned urls
-        // but some problematic images are fetching each time
-        .respectCacheHeaders(false)
+        .components {
+            add(StorageReferenceKeyer())
+            add(FirebaseStorageFetcher.Factory())
+            add(SvgDecoder.Factory())
+        }
+        .diskCache {
+            DiskCache.Builder()
+                .directory(application.cacheDir.resolve("image_cache"))
+                .maxSizePercent(0.02)
+                .build()
+        }
         .apply {
             if (BuildConfig.DEBUG) {
                 logger(DebugLogger())

@@ -45,9 +45,7 @@ dependencies {
     implementation(libs.firebase.storage)
 
     implementation(libs.kotlinx.coroutines.core)
-    implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.coroutines.playServices)
 
-    api(libs.coil.kt)
-    api(libs.coil.kt.compose)
+    implementation(libs.coil.kt)
 }
